@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
+package com.s2u2m.iam.domain.account;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * IndexController create on 2018/10/28
+ * UsernamePasswordAccount create on 2018/11/4
  *
  * @author Amos Xia
  */
-@RestController
-class IndexController {
-
-    @GetMapping("/")
-    public String index() {
-        return "Hello";
-    }
+@Getter
+@Setter
+public class UsernamePasswordAccount extends BaseAccount {
+    private String userName;
+    private String password;
 }

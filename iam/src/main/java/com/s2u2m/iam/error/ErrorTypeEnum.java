@@ -14,21 +14,41 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
+package com.s2u2m.iam.error;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.s2u2m.kit.common.enumtype.EntrySetKeysEnumerable;
 
 /**
- * IndexController create on 2018/10/28
+ * ErrorTypeEnum create on 2018/11/4
  *
  * @author Amos Xia
  */
-@RestController
-class IndexController {
+public enum ErrorTypeEnum implements EntrySetKeysEnumerable {
+    /**
+     * Client Error
+     */
+    CLIENT(1),
 
-    @GetMapping("/")
-    public String index() {
-        return "Hello";
+    /**
+     * Account Error
+     */
+    ACCOUNT(101),
+    ;
+
+    private final int value;
+    ErrorTypeEnum(int value) {
+        this.value = value;
+    }
+
+    private static final int ERROR_TYPE_OFFSET_BITS = 22;
+
+    @Override
+    public int offsetBits() {
+        return ERROR_TYPE_OFFSET_BITS;
+    }
+
+    @Override
+    public int getValue() {
+        return this.value;
     }
 }

@@ -14,21 +14,25 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
+package com.s2u2m.iam.controller.account;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * IndexController create on 2018/10/28
+ * UsernameAccountController create on 2018/11/4
  *
  * @author Amos Xia
  */
 @RestController
-class IndexController {
+@RequestMapping("/account/username")
+public class UsernameAccountController {
 
-    @GetMapping("/")
-    public String index() {
-        return "Hello";
-    }
+//    @PostMapping("")
+//    public ResponseEntity register() {
+//
+//    }
+
 }

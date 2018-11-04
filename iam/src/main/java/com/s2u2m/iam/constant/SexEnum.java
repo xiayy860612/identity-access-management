@@ -14,21 +14,13 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+package com.s2u2m.iam.constant;
 
 /**
- * IndexController create on 2018/10/28
+ * SexEnum create on 2018/11/1
  *
  * @author Amos Xia
  */
-@RestController
-class IndexController {
+public enum SexEnum {
 
-    @GetMapping("/")
-    public String index() {
-        return "Hello";
-    }
 }
