@@ -14,25 +14,15 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.domain;
+package com.s2u2m.iam.dao.user;
 
-import com.s2u2m.iam.constant.SexEnum;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.Instant;
+import com.s2u2m.iam.domain.UserInfo;
 
 /**
- * User create on 2018/11/1
+ * UserDAO create on 2018/11/6
  *
  * @author Amos Xia
  */
-@Getter
-@Setter
-public class User {
-    private String id;
-    private String nickName;
-    private String password;
-    private SexEnum sex;
-    private Instant createTime;
+public interface UserDAO {
+    UserInfo get(String userId);
 }

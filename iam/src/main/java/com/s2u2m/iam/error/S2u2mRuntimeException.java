@@ -14,20 +14,12 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.controller.account;
-
-import lombok.Getter;
-import lombok.Setter;
+package com.s2u2m.iam.error;
 
 /**
- * UsernameAccountRegInfo create on 2018/11/4
+ * S2u2mRuntimeException create on 2018/11/1
  *
  * @author Amos Xia
  */
-@Getter
-@Setter
-public class UsernameAccountRegInfo {
-    private String userName;
-    private String password;
-    private String passwordConfirm;
+public class S2u2mRuntimeException extends RuntimeException {
 }

@@ -16,14 +16,13 @@
 
 package com.s2u2m.iam.config;
 
-import org.springframework.context.annotation.Bean;
+import com.s2u2m.iam.auth.UsernameAuthenticationProvider;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
  * SecurityConfig create on 2018/10/28
@@ -32,22 +31,26 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  */
 @Configuration
 @EnableWebSecurity
-class SecurityConfig extends WebSecurityConfigurerAdapter {
+class SecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .antMatchers().permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+    @Configuration
+    public static class UsernameSecurityConfig extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.antMatcher("/account/username")
+                    .authorizeRequests()
+                    .antMatchers(HttpMethod.POST, "").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .httpBasic();
+        }
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            // config AuthenticationProvider into ProviderManager
+            auth.authenticationProvider(new UsernameAuthenticationProvider());
+        }
     }
 
-    @Override
-    @Bean
-    protected UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.builder().username("user").password("123456").roles("USER").build());
-        return manager;
-    }
 }

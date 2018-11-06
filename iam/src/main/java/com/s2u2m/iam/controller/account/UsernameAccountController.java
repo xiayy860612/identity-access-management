@@ -16,10 +16,10 @@
 
 package com.s2u2m.iam.controller.account;
 
+import com.s2u2m.iam.domain.UserInfo;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * UsernameAccountController create on 2018/11/4
@@ -30,9 +30,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/account/username")
 public class UsernameAccountController {
 
-//    @PostMapping("")
-//    public ResponseEntity register() {
-//
-//    }
+    @PostMapping("")
+    public ResponseEntity register(@RequestBody UsernameAccountRegDTO regInfo) {
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("")
+    public ResponseEntity<String> login() {
+        UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+        return ResponseEntity.ok(userInfo.getNickName());
+    }
 
 }

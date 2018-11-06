@@ -14,19 +14,25 @@
  * limitations under the License.
  */
 
-package com.s2u2m.iam.domain.account;
+package com.s2u2m.iam.domain;
 
+import com.s2u2m.iam.constant.SexEnum;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
+
 /**
- * UsernamePasswordAccount create on 2018/11/4
+ * UserInfo create on 2018/11/1
  *
  * @author Amos Xia
  */
 @Getter
 @Setter
-public class UsernamePasswordAccount extends BaseAccount {
-    private String userName;
+public class UserInfo {
+    private String id;
+    private String nickName;
     private String password;
+    private SexEnum sex;
+    private Instant createTime;
 }
