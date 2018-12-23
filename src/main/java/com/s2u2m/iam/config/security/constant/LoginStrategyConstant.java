@@ -14,27 +14,15 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
-
-import com.s2u2m.iam.config.security.constant.LoginStrategyConstant;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+package com.s2u2m.iam.config.security.constant;
 
 /**
- * IndexController create on 2018/12/23
+ * LoginStrategyConstant create on 2018/12/23
  *
  * @author Amos Xia
  */
-@RestController
-public class IndexController {
+public class LoginStrategyConstant {
+    public static final String LOGIN_PREFIX = "/login";
 
-    @GetMapping("/index")
-    public String index() {
-        return "Hello";
-    }
-
-    @GetMapping(LoginStrategyConstant.USERNAME_PASSWORD)
-    public String usernamePasswordLogin() {
-        return "Username Password login";
-    }
+    public static final String USERNAME_PASSWORD = LOGIN_PREFIX + "/username";
 }
