@@ -14,15 +14,20 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.config.security.constant;
+package com.s2u2m.iam.domain;
+
+import lombok.Builder;
+import lombok.Getter;
 
 /**
- * LoginStrategyConstant create on 2018/12/23
+ * UserEntity create on 2018/12/25
  *
  * @author Amos Xia
  */
-public class LoginStrategyConstant {
-    public static final String LOGIN_PREFIX = "/login";
-
-    public static final String USERNAME_PASSWORD = LOGIN_PREFIX + "/username";
+@Getter
+@Builder
+public final class UserEntity {
+    private String id;
+    private String nickName;
+    private String password;
 }

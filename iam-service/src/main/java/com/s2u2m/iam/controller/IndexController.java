@@ -16,7 +16,6 @@
 
 package com.s2u2m.iam.controller;
 
-import com.s2u2m.iam.config.security.constant.LoginStrategyConstant;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,10 +30,5 @@ public class IndexController {
     @GetMapping("/index")
     public String index() {
         return "Hello";
-    }
-
-    @GetMapping(LoginStrategyConstant.USERNAME_PASSWORD)
-    public String usernamePasswordLogin() {
-        return "Username Password login";
     }
 }

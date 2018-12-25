@@ -14,9 +14,10 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.config.security;
+package com.s2u2m.iam.config.security.username;
 
-import com.s2u2m.iam.config.security.constant.LoginStrategyConstant;
+import com.s2u2m.iam.constant.LoginStrategyConstant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,20 +36,29 @@ public class UsernameLoginConfig {
     @EnableWebSecurity
     public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-        @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            // TODO: use jdbc instead
-            auth.inMemoryAuthentication()
-                    .withUser("test").password("123456").authorities("USER");
-        }
+        @Autowired
+        private UsernameUserDetailServiceImpl usernameUserDetailServiceImpl;
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            final String permitAllUrls = LoginStrategyConstant.USERNAME_PASSWORD + "/**";
-            http.antMatcher(LoginStrategyConstant.USERNAME_PASSWORD)
+            final String[] permitAllUrls = new String[] {
+                    "**/regist"
+            };
+            http.antMatcher(LoginStrategyConstant.USERNAME)
+                    // TODO: enable csrf after fix csrf token issue
+                    .csrf().disable()
                     .authorizeRequests()
                     .antMatchers(permitAllUrls).permitAll()
-                    .anyRequest().authenticated();
+                    .anyRequest().authenticated()
+                    .and()
+//                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                    .and()
+                    .httpBasic();
+        }
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth.userDetailsService(usernameUserDetailServiceImpl);
         }
     }
 }

@@ -21,8 +21,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.s2u2m.iam</groupId>
-    <artifactId>s2u2m-iam</artifactId>
+    <artifactId>s2u2m-iam-all</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>iam-integration</module>
+        <module>iam-service</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,8 +75,6 @@
             <groupId>com.s2u2m.kit</groupId>
             <artifactId>s2u2m-kit-common</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <!--<scope>system</scope>-->
-            <!--<systemPath>${pom.basedir}/lib/s2u2m-kit-common-1.0-SNAPSHOT.jar</systemPath>-->
         </dependency>
 
         <!-- doc related-->
@@ -88,30 +92,11 @@
             <version>2.6.1</version>
         </dependency>
 
-        <!-- core modules-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- security -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <!--<dependency>-->
