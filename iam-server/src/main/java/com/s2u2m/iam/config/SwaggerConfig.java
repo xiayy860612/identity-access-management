@@ -25,9 +25,15 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.BasicAuth;
+import springfox.documentation.service.SecurityScheme;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * SwaggerConfig create on 19-2-12.
@@ -47,12 +53,33 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
                 .build();
+//                .securitySchemes(securitySchemes())
+//                .securityContexts(securityContexts());
     }
+
+//    @Bean
+//    public SecurityConfiguration security() {
+//        return SecurityConfigurationBuilder.builder()
+//                .useBasicAuthenticationWithAccessCodeGrant(false)
+//                .build();
+//    }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title(IamServerApplication.class.getSimpleName())
                 .build();
+    }
+
+    private List<SecurityScheme> securitySchemes() {
+        var schemes = new LinkedList<SecurityScheme>();
+        var httpBasicScheme = new BasicAuth("basic");
+        schemes.add(httpBasicScheme);
+        return schemes;
+    }
+
+    private List<SecurityContext> securityContexts() {
+        var contexts = new LinkedList<SecurityContext>();
+        return contexts;
     }
 
 }

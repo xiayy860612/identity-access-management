@@ -22,7 +22,7 @@
 
     <groupId>com.s2u2m.iam</groupId>
     <artifactId>iam-server</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <repositories>
         <repository>
@@ -43,6 +43,7 @@
         <java.version>11</java.version>
         <swagger.version>2.8.0</swagger.version>
         <pmd.version>6.10.0</pmd.version>
+        <mysql.version>8.0.15</mysql.version>
     </properties>
 
     <parent>
@@ -74,6 +75,28 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- storage -->
+        <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb.flyway-test-extensions</groupId>
+            <artifactId>flyway-spring-test</artifactId>
+            <version>5.2.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -120,6 +143,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <!--below config only used in dev env-->
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/iam?useSSL=false</url>
+                    <user>root</user>
+                    <password>root1234</password>
+                </configuration>
             </plugin>
 
             <plugin>
