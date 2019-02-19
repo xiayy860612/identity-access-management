@@ -31,6 +31,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class IamSecurityConfig {
 
+//    @Bean
+//    public UserDetailsService userDetailsService() throws Exception {
+//        // ensure the passwords are encoded properly
+//        User.UserBuilder users = User.builder();
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(users.username("user").password("password").roles("USER").build());
+//        return manager;
+//    }
+
     @Configuration
     public static class UsernameSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -38,8 +47,9 @@ public class IamSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("*/swagger*", "/v2/api-docs").permitAll();
-//                    .anyRequest().authenticated()
+                    // swagger permit
+                    .antMatchers("/swagger*").permitAll();
+//                    .anyRequest().authenticated();
 //                    .and()
 //                    .httpBasic();
         }
