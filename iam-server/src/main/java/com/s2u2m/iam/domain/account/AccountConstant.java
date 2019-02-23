@@ -14,25 +14,22 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql;
-
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+package com.s2u2m.iam.domain.account;
 
 /**
- * UserMapper create on 19-2-17.
+ * AccountConstant create on 19-2-23.
  *
  * @author Amos Xia
  */
-@Mapper
-public interface UserMapper {
+public final class AccountConstant {
+    /**
+     * username account use 66 characters [a-zA-Z0-9_@-.],
+     * username account length is <strong>len</strong>
+     * Max amount of username account is <strong>66^len</strong>.
+     */
+    public static final String USERNAME_PATTERN = "[\\w@-.]";
+    public static final int MIN_USERNAME_LENGTH = 12;
+    public static final int MAX_USERNAME_LENGTH = 32;
 
-    @Insert("insert into User " +
-            "(id, nickName, password, genderEnum, birthday, " +
-            "creator, updater) " +
-            "values " +
-            "(#{entity.id}, #{entity.nickName}, #{entity.password}, #{entity.genderEnum}, #{entity.birthday}, " +
-            "#{entity.creator}, #{entity.creator})")
-    int create(@Param("entity") UserEntity entity);
+
 }

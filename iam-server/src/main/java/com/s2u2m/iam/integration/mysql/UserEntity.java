@@ -14,26 +14,24 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql;
+package com.s2u2m.iam.integration.mysql;
 
+import com.s2u2m.iam.constant.GenderEnum;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
 
 /**
- * BaseEntity create on 19-2-17.
+ * UserEntity create on 19-2-17.
  *
  * @author Amos Xia
  */
 @Getter
 @Setter
-public abstract class BaseEntity {
-    private String id;
-
-    private Boolean valid;
-    private String creator;
-    private Instant createTime;
-    private String updater;
-    private Instant updateTime;
+public final class UserEntity extends BaseEntity {
+    private String nickName;
+    private String password;
+    private GenderEnum gender;
+    private Instant birthday;
 }

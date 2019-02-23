@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql.handler;
+package com.s2u2m.iam.integration.mysql.handler;
 
 import com.s2u2m.iam.constant.IIntEnum;
 import org.apache.ibatis.type.JdbcType;
