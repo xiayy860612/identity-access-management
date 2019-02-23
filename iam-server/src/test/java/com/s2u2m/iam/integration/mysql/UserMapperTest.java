@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql;
+package com.s2u2m.iam.integration.mysql;
 
 import com.s2u2m.iam.constant.GenderEnum;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class UserMapperTest extends BaseMySqlTest {
         md.update("test1234".getBytes());
         String password = new BigInteger(1, md.digest()).toString(16);
         entity.setPassword(password);
-        entity.setGenderEnum(GenderEnum.FEMALE);
+        entity.setGender(GenderEnum.FEMALE);
         entity.setBirthday(Instant.now());
         entity.setCreator("admin");
 

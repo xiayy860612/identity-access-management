@@ -19,7 +19,7 @@
 <configuration>
 
     <typeHandlers>
-        <typeHandler handler="com.s2u2m.iam.repository.mysql.handler.IntEnumHandler"
+        <typeHandler handler="com.s2u2m.iam.integration.mysql.handler.IntEnumHandler"
                      javaType="com.s2u2m.iam.constant.GenderEnum" />
     </typeHandlers>
 </configuration>

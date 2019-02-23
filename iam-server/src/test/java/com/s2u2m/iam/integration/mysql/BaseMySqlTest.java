@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql;
+package com.s2u2m.iam.integration.mysql;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

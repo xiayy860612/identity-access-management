@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Amos Xia
  */
 @Configuration
-@MapperScan("com.s2u2m.iam.repository.mysql")
-@EntityScan("com.s2u2m.iam.repository.mysql")
+@MapperScan("com.s2u2m.iam.integration.mysql")
+@EntityScan("com.s2u2m.iam.integration.mysql")
 public class MybatisConfig {
 }

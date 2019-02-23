@@ -14,19 +14,18 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.repository.mysql.account;
+package com.s2u2m.iam.integration.mysql.account;
 
-import com.s2u2m.iam.repository.mysql.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * BaseAccountEntity create on 19-2-17.
+ * UsernameAccountEntity create on 19-2-17.
  *
  * @author Amos Xia
  */
 @Getter
 @Setter
-abstract class BaseAccountEntity extends BaseEntity {
-    private String userId;
+public final class UsernameAccountEntity extends BaseAccountEntity {
+    private String username;
 }
