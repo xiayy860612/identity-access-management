@@ -5,14 +5,14 @@ interface Authentication
 interface AuthenticationManager {
     Authentication authenticate(Authentication var1) throws AuthenticationException;
 }
-
-AuthenticationManager --> Authentication
-note right
+note left
 input not authenticate token,
 if authenticated, return authenticated token,
-if not authenticated, return null,
+if not authenticated, return null and continue authenticate,
 if invalid, throw AuthenticationException
 end note
+
+AuthenticationManager --> Authentication: use
 
 class ProviderManager
 
