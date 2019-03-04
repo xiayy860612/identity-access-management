@@ -16,11 +16,18 @@
 
 package com.s2u2m.iam.config;
 
+import com.s2u2m.iam.service.authentication.UsernameAccountUserDetailsService;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * IamSecurityConfig create on 19-2-12.
@@ -43,20 +50,38 @@ public class IamSecurityConfig {
     @Configuration
     public static class UsernameSecurityConfig extends WebSecurityConfigurerAdapter {
 
+        @Autowired
+        private UsernameAccountUserDetailsService usernameAccountUserDetailsService;
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
                     // swagger permit
-                    .antMatchers("/swagger*").permitAll();
-//                    .anyRequest().authenticated();
-//                    .and()
-//                    .httpBasic();
+                    .antMatchers("/swagger*").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .httpBasic();
         }
 
         @Override
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            // config AuthenticationProvider into ProviderManager
+        protected UserDetailsService userDetailsService() {
+            return usernameAccountUserDetailsService;
+        }
+
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+            return new PasswordEncoder() {
+                @Override
+                public String encode(CharSequence charSequence) {
+                    return charSequence.toString();
+                }
+
+                @Override
+                public boolean matches(CharSequence charSequence, String s) {
+                    return s.equalsIgnoreCase(charSequence.toString());
+                }
+            };
         }
     }
 }

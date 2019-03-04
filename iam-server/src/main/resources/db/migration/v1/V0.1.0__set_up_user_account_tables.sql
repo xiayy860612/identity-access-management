@@ -16,7 +16,7 @@ create table User (
 ) ENGINE=InnoDB;
 
 create table UsernameAccount (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(32) NOT NULL DEFAULT '',
     userId BIGINT UNSIGNED NOT NULL,
 
