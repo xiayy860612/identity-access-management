@@ -1,5 +1,5 @@
 /*
- *    Copyright [2019] [s2u2m]
+ *    Copyright [2018-2019] [s2u2m]
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,27 +14,15 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.controller;
+package com.s2u2m.iam.domain.account;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.s2u2m.iam.domain.User;
+import lombok.Builder;
+import lombok.Getter;
 
-/**
- * IndexController create on 19-2-17.
- *
- * @author Amos Xia
- */
-@RestController
-public class IndexController {
-
-    @GetMapping("/")
-    public String index() {
-        return "Hello world";
-    }
-
-    @GetMapping("/{pong}")
-    public String pingPong(@PathVariable("pong") String pong) {
-        return pong;
-    }
+@Builder
+@Getter
+public class UsernameAccount {
+    private String username;
+    private User user;
 }
