@@ -13,3 +13,4 @@
 [Spring Security Reference]: https://docs.spring.io/spring-security/site/docs/5.2.0.BUILD-SNAPSHOT/reference/htmlsingle/
 [Spring Security Architecture]: https://spring.io/guides/topicals/spring-security-architecture/
 [Setting Up Swagger 2 with a Spring REST API]: https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+[OAuth2 --- 阮一峰]: https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html
