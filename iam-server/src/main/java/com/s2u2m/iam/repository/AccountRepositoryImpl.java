@@ -18,10 +18,17 @@ package com.s2u2m.iam.repository;
 
 import com.s2u2m.iam.domain.User;
 import com.s2u2m.iam.domain.account.UsernameAccount;
+import com.s2u2m.iam.error.exception.AccountExistedException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AccountRepositoryImpl implements AccountRepository {
+    @Override
+    public boolean isUsernameAccountExisted(String username) {
+        return false;
+    }
+
     @Override
     public UsernameAccount getUsernameAccount(String username) {
         User user = User.builder()
@@ -33,5 +40,11 @@ public class AccountRepositoryImpl implements AccountRepository {
                 .user(user)
                 .build();
         return account;
+    }
+
+    @Transactional
+    @Override
+    public void registerUsernameAccount(UsernameAccount account) throws AccountExistedException {
+
     }
 }

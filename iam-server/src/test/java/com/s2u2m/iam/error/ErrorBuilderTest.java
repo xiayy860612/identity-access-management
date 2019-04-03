@@ -4,9 +4,9 @@ import com.s2u2m.iam.constant.ModuleEnum;
 import lombok.Getter;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class ModuleErrorBuilderTest {
+public class ErrorBuilderTest {
 
     enum ModuleErrorTestEnum implements IModuleErrorDef {
         TEST_ERROR_1(1),
@@ -29,7 +29,7 @@ public class ModuleErrorBuilderTest {
     @Test
     public void build() {
         int exp = 0x00000101;
-        int error = ModuleErrorBuilder.build(ModuleErrorTestEnum.TEST_ERROR_1);
+        int error = ErrorBuilder.build(ModuleErrorTestEnum.TEST_ERROR_1);
         assertEquals(exp, error);
     }
 }

@@ -17,7 +17,6 @@
 package com.s2u2m.iam.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,8 +32,4 @@ public class IndexController {
         return "Hello world";
     }
 
-    @GetMapping("/{pong}")
-    public String pingPong(@PathVariable("pong") String pong) {
-        return pong;
-    }
 }

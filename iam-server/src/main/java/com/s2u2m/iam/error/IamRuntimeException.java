@@ -10,12 +10,16 @@ public final class IamRuntimeException extends RuntimeException {
 
     private final int errorCode;
 
-    protected IamRuntimeException(final int code, String msg) {
+    IamRuntimeException(final int code, String msg) {
         this(code, msg, null);
     }
 
-    protected IamRuntimeException(final int code, String msg, Throwable cause) {
+    IamRuntimeException(final int code, String msg, Throwable cause) {
         super(msg, cause);
         this.errorCode = code;
+    }
+
+    IamRuntimeException(BaseIamException exception) {
+        this(exception.getErrorCode(), exception.getMessage(), exception.getCause());
     }
 }

@@ -17,7 +17,12 @@
 package com.s2u2m.iam.repository;
 
 import com.s2u2m.iam.domain.account.UsernameAccount;
+import com.s2u2m.iam.error.exception.AccountExistedException;
 
 public interface AccountRepository {
+    boolean isUsernameAccountExisted(String username);
+
     UsernameAccount getUsernameAccount(String username);
+
+    void registerUsernameAccount(UsernameAccount account) throws AccountExistedException;
 }

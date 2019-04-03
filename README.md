@@ -6,6 +6,13 @@
 - spring security
 - mysql 8
 
+## Requirement
+
+- Basic Login with username/password
+- session management
+- oauth2
+- permission
+
 
 ---
 

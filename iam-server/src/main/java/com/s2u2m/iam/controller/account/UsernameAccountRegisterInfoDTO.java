@@ -14,26 +14,16 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.constant;
+package com.s2u2m.iam.controller.account;
 
-/**
- * GenderEnum create on 19-2-17.
- *
- * @author Amos Xia
- */
-@SuppressWarnings("ALL")
-public enum GenderEnum implements IIntEnum<GenderEnum> {
-    UNKNONW(0),
-    MALE(1),
-    FEMALE(2),
-    ;
+import com.s2u2m.iam.constant.GenderEnum;
+import lombok.Getter;
+import lombok.Setter;
 
-    private final int value;
-    GenderEnum(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public int getValue() {
-        return this.value;
-    }}
+@Getter
+@Setter
+public class UsernameAccountRegisterInfoDTO {
+    private String username;
+    private String password;
+    private GenderEnum gender;
+}

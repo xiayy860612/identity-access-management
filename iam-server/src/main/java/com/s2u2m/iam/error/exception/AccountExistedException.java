@@ -14,26 +14,23 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.constant;
+package com.s2u2m.iam.error.exception;
+
+import com.s2u2m.iam.error.AccountErrorEnum;
+import com.s2u2m.iam.error.BaseIamException;
+import com.s2u2m.iam.error.ErrorBuilder;
 
 /**
- * GenderEnum create on 19-2-17.
- *
  * @author Amos Xia
  */
-@SuppressWarnings("ALL")
-public enum GenderEnum implements IIntEnum<GenderEnum> {
-    UNKNONW(0),
-    MALE(1),
-    FEMALE(2),
-    ;
+public final class AccountExistedException extends BaseIamException {
+    private static final int code = ErrorBuilder.build(AccountErrorEnum.ACCOUNT_EXISTED);
 
-    private final int value;
-    GenderEnum(int value) {
-        this.value = value;
+    protected AccountExistedException(String msg) {
+        super(code, msg);
     }
 
-    @Override
-    public int getValue() {
-        return this.value;
-    }}
+    protected AccountExistedException(Throwable cause, String msg) {
+        super(code, msg, cause);
+    }
+}

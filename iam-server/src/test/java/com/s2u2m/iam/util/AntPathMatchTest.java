@@ -14,26 +14,27 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.constant;
+package com.s2u2m.iam.util;
 
-/**
- * GenderEnum create on 19-2-17.
- *
- * @author Amos Xia
- */
-@SuppressWarnings("ALL")
-public enum GenderEnum implements IIntEnum<GenderEnum> {
-    UNKNONW(0),
-    MALE(1),
-    FEMALE(2),
-    ;
+import org.junit.Test;
+import org.springframework.util.AntPathMatcher;
 
-    private final int value;
-    GenderEnum(int value) {
-        this.value = value;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+
+public class AntPathMatchTest {
+
+    @Test
+    public void swaggerUrlAntMatch() {
+        List<String> swaggerUrlPaths = Arrays.asList(
+                "/swagger-ui.html"
+        );
+        var antMatcher = new AntPathMatcher();
+        for (String swaggerUrlPath : swaggerUrlPaths) {
+            boolean rst = antMatcher.match("/**/*swagger*/**", swaggerUrlPath);
+            assertTrue(rst);
+        }
     }
-
-    @Override
-    public int getValue() {
-        return this.value;
-    }}
+}

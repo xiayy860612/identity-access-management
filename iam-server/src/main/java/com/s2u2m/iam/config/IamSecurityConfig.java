@@ -17,16 +17,14 @@
 package com.s2u2m.iam.config;
 
 import com.s2u2m.iam.service.authentication.UsernameAccountUserDetailsService;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -58,10 +56,15 @@ public class IamSecurityConfig {
             http
                     .authorizeRequests()
                     // swagger permit
-                    .antMatchers("/swagger*").permitAll()
+                    .antMatchers("/**/*swagger*/**", "/v2/api-docs").permitAll()
+                    // account register
+                    .antMatchers(HttpMethod.POST, "/*-accounts/").permitAll()
                     .anyRequest().authenticated()
                     .and()
-                    .httpBasic();
+                    .httpBasic()
+                    // TODO: enable csrf later
+                    .and()
+                    .csrf().disable();
         }
 
         @Override

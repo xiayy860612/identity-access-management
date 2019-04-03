@@ -14,26 +14,15 @@
  *    limitations under the License.
  */
 
-package com.s2u2m.iam.constant;
+package com.s2u2m.iam.controller;
 
-/**
- * GenderEnum create on 19-2-17.
- *
- * @author Amos Xia
- */
-@SuppressWarnings("ALL")
-public enum GenderEnum implements IIntEnum<GenderEnum> {
-    UNKNONW(0),
-    MALE(1),
-    FEMALE(2),
-    ;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Builder;
 
-    private final int value;
-    GenderEnum(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public int getValue() {
-        return this.value;
-    }}
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Builder
+public class ResponseBody<T> {
+    private T data;
+    private int error;
+    private String message;
+}
