@@ -24,3 +24,7 @@ hs_err_pid*
 
 # ide ignore
 .idea/
+*.iml
+
+# build ignore
+target/
