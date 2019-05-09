@@ -1,0 +1,46 @@
+@startuml
+
+interface Authentication
+
+interface AuthenticationManager {
+    Authentication authenticate(Authentication var1) throws AuthenticationException;
+}
+note left
+input not authenticate token,
+if authenticated, return authenticated token,
+if not authenticated, return null and continue authenticate,
+if invalid, throw AuthenticationException
+end note
+
+AuthenticationManager --> Authentication: use
+
+class ProviderManager
+
+AuthenticationManager <|-- ProviderManager
+
+interface AuthenticationProvider {
+    Authentication authenticate(Authentication authentication) throws AuthenticationException;
+}
+
+ProviderManager "1" *-- "*" AuthenticationProvider: contains
+'ProviderManager "1" o-- "0..1" AuthenticationManager: parent
+
+abstract class AbstractUserDetailsAuthenticationProvider
+
+AbstractUserDetailsAuthenticationProvider -left-|> AuthenticationManager
+
+DaoAuthenticationProvider -up-|> AbstractUserDetailsAuthenticationProvider
+
+interface UserDetailsService {
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+}
+
+interface PasswordEncoder {
+    String encode(CharSequence rawPassword);
+    boolean matches(CharSequence rawPassword, String encodedPassword);
+}
+
+DaoAuthenticationProvider "1" *-- "1" UserDetailsService
+DaoAuthenticationProvider "1" *-- "1" PasswordEncoder
+
+@enduml
