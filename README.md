@@ -7,6 +7,10 @@
 - mysql 8
 
 
+## Reference
+
+- [geektime-geekbang/oauth2lab](https://github.com/geektime-geekbang/oauth2lab)
+
 ---
 
 [Migrate Maven Projects to Java 11]: https://winterbe.com/posts/2018/08/29/migrate-maven-projects-to-java-11-jigsaw/
@@ -14,3 +18,4 @@
 [Spring Security Architecture]: https://spring.io/guides/topicals/spring-security-architecture/
 [Setting Up Swagger 2 with a Spring REST API]: https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 [OAuth2 --- 阮一峰]: https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html
+[OAuth 2 Developers Guide]: https://projects.spring.io/spring-security-oauth/docs/oauth2.html
