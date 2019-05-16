@@ -1,6 +1,7 @@
-package com.s2u2m.iam.error;
+package com.s2u2m.iam.error.def;
 
 import com.s2u2m.iam.constant.ModuleEnum;
+import com.s2u2m.iam.error.IModuleErrorDef;
 import lombok.Getter;
 
 /**

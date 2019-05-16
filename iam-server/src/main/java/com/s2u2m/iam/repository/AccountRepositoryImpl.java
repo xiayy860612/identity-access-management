@@ -25,6 +25,8 @@ public class AccountRepositoryImpl implements AccountRepository {
     @Override
     public UsernameAccount getUsernameAccount(String username) {
         User user = User.builder()
+                .uid("1")
+                .nickName(username)
                 .password("1234")
                 .build();
 

@@ -1,0 +1,19 @@
+@startuml "Account User Design"
+
+abstract class Account
+class UsernameAccount extends Account {
+    + String username;
+}
+
+class PhoneAccount extends Account {
+    + String phone;
+}
+
+class User {
+    + String uid;
+    + String password;
+}
+User "1" o-right- "1..*" Account: bind
+
+
+@enduml

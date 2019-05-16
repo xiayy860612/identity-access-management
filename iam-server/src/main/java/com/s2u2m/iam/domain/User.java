@@ -9,6 +9,7 @@ import java.time.Instant;
 @Builder
 @Getter
 public class User {
+    private String uid;
     private String nickName;
     private String password;
     private GenderEnum gender;
